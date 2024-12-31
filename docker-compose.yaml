@@ -1,0 +1,17 @@
+services:
+  stream-message:
+    image: "rabbitmq:management"
+    container_name: stream-message
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    networks:
+      - stream-forge
+
+networks:
+  stream-forge:
+    driver: bridge
+    external: true
